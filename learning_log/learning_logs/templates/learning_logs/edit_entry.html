@@ -1,0 +1,17 @@
+{%extends 'learning_logs/base.html'%}
+{%load bootstrap3%}
+{%block content%}
+<h3>
+    <a href="{%url 'learning_logs:topic' topic.id%}">{{topic}}</a>
+</h3>
+<h5>
+    编辑笔记:
+</h5>
+<form action="{%url 'learning_logs:edit_entry' entry.id%}" method="post">
+    {%csrf_token%}
+    <div>
+        {{form.as_p}}
+    </div>
+    <input type="submit" value="保存编辑" class="btn btn-primary btn-sm">
+</form>
+{%endblock content%}

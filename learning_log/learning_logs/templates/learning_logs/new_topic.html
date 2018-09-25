@@ -1,0 +1,16 @@
+{%extends 'learning_logs/base.html'%}
+{%load bootstrap3%}s
+{%block header%}
+<h3>
+    添加标题:
+</h3>
+{%endblock header%}
+{%block content%}
+<form action="/new_topic/" method="post" class="form">
+    {%csrf_token%}
+    {%bootstrap_form form%}
+    {%buttons%}
+        <button name="submit" class="btn btn-primary">添加标题</button>
+    {%endbuttons%}
+</form>
+{%endblock content%}

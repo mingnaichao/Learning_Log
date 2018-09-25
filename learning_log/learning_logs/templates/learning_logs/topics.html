@@ -1,0 +1,25 @@
+{%extends 'learning_logs/base.html'%}
+{%load bootstrap3%}
+{%block header%}
+<h2>标题:</h2>
+{%endblock header%}
+{%block content%}
+<ul>
+    {%for topic in topics%}
+    <li>
+        <div class="alert alert-default" role="alert" style="background-color: #f5f5f5">
+            <strong><a href="{%url 'learning_logs:topic' topic.id%}">{{topic}}</a></strong><br>
+            <span>&nbsp;&nbsp;Create Time:&nbsp;&nbsp;{{topic.date_added|date:'M d,Y H:i'}}</span>
+            &nbsp;&nbsp;<a href="{%url 'learning_logs:edit_topic' topic.id%}" class="btn btn-default btn-xs">修改标题</a>&nbsp;&nbsp;<a
+                href="{%url 'learning_logs:delete_topic' topic.id%}" class="btn btn-danger btn-xs">删除标题</a>
+        </div>
+    </li>
+    {%empty%}
+    <li style="font-size: 20px;">
+        Sorry,no topics have been added yet.
+    </li>
+    {%endfor%}
+</ul>
+<a href="{%url 'learning_logs:new_topic'%}" class="btn btn-primary">添加标题</a>
+
+{%endblock content%}

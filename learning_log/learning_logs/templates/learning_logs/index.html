@@ -1,0 +1,46 @@
+{%extends 'learning_logs/base.html'%}
+{%load bootstrap3%}
+{%block index%}
+<div class="jumbotron" style="height: 330px;margin: 0">
+    <div class="container">
+        {%if user.is_authenticated%}
+        <h1>Hello,{{user.username}}</h1>
+        <p>感谢您使用我们的笔记，我们会努力开发更好用的功能，我们希望您喜欢它。<br>
+            我们祝您生活愉快，天天开心。</p>
+        {%else%}
+        <h1>Hello, world!</h1>
+        <p><a href="{%url 'users:register' %}" style="font-family: Optima">注册一个账户</a>用来记录你读过的书籍。<br>
+            你正在读一本很实用的书，看到书中对你有所帮助的内容，用CorgiNote将它们记录下来，又或是你正在读一本很经典的书，当书中的内容触动你内心深处的时候，用CorgiNote将内容记录下来，这都将是你人生中最宝贵的财富。
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="{%url 'users:login' %}" role="button">Login now »</a></p>
+        {%endif%}
+    </div>
+</div>
+{%endblock index%}
+{%block content%}
+<div>
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>《活着》- 余华</h2>
+            <p style="height: 100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"活着"在我们中国的语言里充满了力量，它的力量不是来自于喊叫，也不是来自于进攻，而是忍受，去忍受生命赋予我们的责任，去忍受现实给予我们的幸福和苦难、无聊和平庸。
+                -- 韩文版自序</p>
+            <p><a class="btn btn-default" href="https://item.jd.com/12239650.html" role="button" target="_blank">JD Buy
+                »</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>《穆斯林的葬礼》- 霍达</h2>
+            <p style="height: 100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最纯洁的梦想，最凄美的爱情，最痛苦的命运。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个穆斯林家族，六十年间的兴衰，三代人命运的沉浮，两个发生在不同时代、有着不同内容却又交错扭结的爱情悲剧。
+            </p>
+            <p><a class="btn btn-default" href="https://item.jd.com/11775777.html" role="button" target="_blank">JD Buy
+                »</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>《教父》- 马里奥·普佐</h2>
+            <p style="height: 100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;美国出版史上的头号畅销书，曾连续70周排名畅销榜，37年销量达2000万册。早在七十年代初已拍成电影，发行世界各国，受到普遍欢迎，据小说改编的三部电影有两部获奥斯卡奖。</p>
+            <p><a class="btn btn-default" href="https://item.jd.com/11427338.html" role="button" target="_blank">JD Buy
+                »</a></p>
+        </div>
+    </div>
+</div>
+{%endblock content%}

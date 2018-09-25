@@ -1,0 +1,81 @@
+{%load bootstrap3%}  <!--加载模版集标签-->
+<!DOCTYPE html>
+<html lang="en"> <!--将文件声明为使用英语编写的html文档-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X_UA_Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CorgiNote</title>
+    {%bootstrap_css%}
+    {%bootstrap_javascript%}
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin: 0">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"></button>
+            <a href="{%url 'learning_logs:index'%}" class="navbar-brand" style="font-family: 'Optima';font-size: 20px;">CorgiNote</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {%if user.is_authenticated%}
+                <li><a href="{%url 'learning_logs:home'%}">HOME</a></li>
+                <li><a href="{%url 'learning_logs:topics'%}">标题列表</a></li>
+                <li><a href="{%url 'learning_logs:new_topic'%}">添加标题</a></li>
+                <li><a href="{%url 'learning_logs:query_entry'%}">搜索笔记</a></li>
+                <li><a href="{%url 'learning_logs:query_book'%}">搜索图书</a></li>
+                <li><a href="{%url 'learning_logs:behavior_analysis'%}">行为分析</a></li>
+                {%endif%}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--验证用户是否已登录-->
+                {%if user.is_authenticated%}
+                <li><a style="font-family: Optima;">Hello,{{user.username}}</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">更多 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{%url 'users:password_change'%}?">修改密码</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="{%url 'users:logout'%}">退出</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {%else%}
+                <li><a href="{%url 'users:login'%}">登录</a></li>
+                <li><a href="{%url 'users:register'%}">注册</a></li>
+                {%endif%}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div>
+    {%block index%}
+    {%endblock index%}
+</div>
+<div class="container">
+    <div class="page-header">
+        <div style="margin-top: 80px;margin-bottom: 20px">
+            {%block header%}
+            {%endblock header%}
+        </div>
+        <div>
+            {%block content%}
+            {%endblock content%}
+        </div>
+    </div>
+    <div>
+        <footer>
+            <p class="pull-right"><a class="btn btn-primary btn-xs" href="#" role="button">Back to top</a></p>
+            <p>© 2018 Coorgi, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

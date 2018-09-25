@@ -1,0 +1,28 @@
+{%extends 'learning_logs/base.html'%}
+{%load bootstrap3%}
+{%block header%}
+<h3>搜索结果：</h3>
+{%endblock header%}
+{%block content%}
+{%for entry in entries%}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>
+            {{entry.date_added|date:'M d,Y H:i'}}
+            <small>
+                <a href="{%url 'learning_logs:edit_entry' entry.id%}" class="btn btn-default btn-xs">编辑笔记</a>
+                <a href="{%url 'learning_logs:delete_entry' entry.id%}" class="btn btn-default btn-xs">删除笔记</a>
+            </small>
+        </h4>
+    </div>
+    <div class="panel-body">
+        <!--linebreaks将包含换行符的长条目转换为浏览器能够理解的格式，以免显示为一个不间断的文本块-->
+        {{entry.text|linebreaks}}
+    </div>
+</div>
+{%empty%}
+<p style="font-size: 17px;">
+    没有与您输入内容相匹配的笔记，请检查您输入的搜索内容，尝试重新搜索...
+</p>
+{%endfor%}
+{%endblock content%}

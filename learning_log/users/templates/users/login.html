@@ -1,0 +1,24 @@
+{%extends 'learning_logs/base.html'%}
+{%load bootstrap3%}
+
+{%block header%}
+<h3>
+    登录你的账户.
+</h3>
+{%endblock header%}
+
+{%block content%}
+<form action="{%url 'users:login'%}" method="post" class="form">
+    {%csrf_token%}
+    <!--模板bootstrap_form将Bootstrap样式规则应用于各个表单-->
+    {%bootstrap_form form%}
+    <div>
+        <button name="submit" class="btn btn-primary">登录</button>
+        <span>&nbsp;&nbsp;没有账号？<a href="{%url 'users:register'%}">立即注册</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span><a href="{%url 'users:password_reset'%}">忘记密码？</a></span>
+    </div>
+
+    <!--用户登录成功后重定向到主页-->
+    <input type="hidden" name="next" value="{%url 'learning_logs:home'%}">
+</form>
+{%endblock content%}

@@ -1,0 +1,60 @@
+{%extends 'learning_logs/base.html'%}
+{%load bootstrap3%}
+{%block header%}
+<h3>用户行为分析：</h3>
+{%endblock header%}
+{%block content%}
+<span class="btn btn-default btn-sm">历史搜索：</span>
+<br><br>
+<div>
+    <iframe src="analysis.svg" width="1140" height="690">
+    </iframe>
+</div>
+<hr>
+<span class="btn btn-default btn-sm">行为分析：</span>
+<br><br>
+<div>
+    <div class="alert alert-default" role="alert" style="background-color: #f5f5f5">
+        >> 您一共搜索过 {{dict.book_num}} 本书籍,真是渴望知识的好孩子！
+    </div>
+    <div class="alert alert-default" role="alert" style="background-color: #f5f5f5">
+        >> 您搜索过最多的书籍是: 《{{dict.hot_book}}》, 一共搜索了 {{dict.search_num}} 次,看来它是您的最爱!
+    </div>
+    <div class="alert alert-default" role="alert" style="background-color: #f5f5f5">
+        >> 京东Go:&nbsp;&nbsp;&nbsp;<a href="{{dict.jd_buy}}" target="_blank">买买买,买您最喜爱的《{{dict.hot_book}}》</a>
+    </div>
+</div>
+<hr>
+<span class="btn btn-default btn-sm">根据您的行为,我们推荐的书籍：</span>
+<br><br>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>1.{{books_dict.book1}}</th>
+            <th>2.{{books_dict.book2}}</th>
+            <th>3.{{books_dict.book3}}</th>
+            <th>4.{{books_dict.book4}}</th>
+            <th>5.{{books_dict.book5}}</th>
+        </tr>
+        <tr>
+            <th>6.{{books_dict.book6}}</th>
+            <th>7.{{books_dict.book7}}</th>
+            <th>8.{{books_dict.book8}}</th>
+            <th>9.{{books_dict.book9}}</th>
+            <th>10{{books_dict.book10}}</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+{%endblock content%}
